@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 15px;
+  border: 3px solid #ffe81f;
+  background-color: rgb(3, 3, 3);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.genderContainer {
+  display: flex;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 15px;
+}
+
+.gender {
+  margin-right: 15px;
+}
