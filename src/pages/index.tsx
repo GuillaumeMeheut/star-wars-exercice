@@ -6,7 +6,7 @@ import { PersoCard } from "../components/persoCard";
 import { StarShipCard } from "../components/starShipCard";
 
 export default function Home() {
-  const [data, setData] = useState<any>({ results: [] });
+  const [data, setData] = useState({ results: [] });
   const [search, setSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("people");
 
