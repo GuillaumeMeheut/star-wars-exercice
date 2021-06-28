@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import { CategoryButton } from "../components/categoryButton";
 import { PersoCard } from "../components/persoCard";
 import { StarShipCard } from "../components/starShipCard";
+import Link from "next/link";
 
 export default function Home() {
   const [data, setData] = useState<any>({ results: [] });
@@ -11,9 +12,7 @@ export default function Home() {
   const [category, setCategory] = useState<string>("people");
 
   const onSearch = async () => {
-    const res = await fetch(
-      `https://swapi.dev/api/${category}/?search=${search}`
-    );
+    const res = await fetch(`https://swapi.dev/api/${category}/?search=${search}`);
     let data = await res.json();
     console.log(data);
     setData(data);
@@ -27,9 +26,7 @@ export default function Home() {
       </Head>
 
       <div>
-        <h2 className={styles.title}>
-          Bonjour rebelle quel données souhaitez-vous consulter ?
-        </h2>
+        <h2 className={styles.title}>Bonjour rebelle quel données souhaitez-vous consulter ?</h2>
       </div>
       <div className={styles.container}>
         <div>
@@ -62,11 +59,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <input
-          type="text"
-          value={search}
-          onChange={(ev) => setSearch(ev.target.value)}
-        />
+        <input type="text" value={search} onChange={(ev) => setSearch(ev.target.value)} />
         <button className={styles.searchButton} onClick={() => onSearch()}>
           Afficher les résultats
         </button>
@@ -84,16 +77,23 @@ export default function Home() {
                   {category === "people" ? (
                     <PersoCard infos={infos} href={`/people/${infos.name}`} />
                   ) : category === "starships" ? (
-                    <StarShipCard
-                      infos={infos}
-                      href={`/starships/${infos.name}`}
-                    />
+                    <StarShipCard infos={infos} href={`/starships/${infos.name}`} />
                   ) : null}
                 </>
               );
             })
           )}
         </div>
+      </div>
+
+      <div>
+        <h3 className={styles.title}>Avec backend:</h3>
+        <Link href="/withBack/people">
+          <button>People</button>
+        </Link>
+        <Link href="/withBack/starships">
+          <button>Vaisseaux</button>
+        </Link>
       </div>
     </div>
   );
